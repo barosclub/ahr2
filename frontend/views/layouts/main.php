@@ -7,10 +7,11 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use frontend\assets\AppAsset;
+use frontend\assets\AdminLteAsset;
 use common\widgets\Alert;
 
-AppAsset::register($this);
+AdminLteAsset::register($this);
+//AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -22,10 +23,11 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="skin-blue sidebar-mini">
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div class="wrapper">
+    <header class="main-header">
     <?php
     NavBar::begin([
         'brandLabel' => 'My Company',
@@ -54,9 +56,9 @@ AppAsset::register($this);
         'items' => $menuItems,
     ]);
     NavBar::end();
-    ?>
-
-    <div class="container">
+    ?></header>
+    
+    <div class="content-wrapper">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
@@ -64,14 +66,7 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+ </div>
 
 <?php $this->endBody() ?>
 </body>
